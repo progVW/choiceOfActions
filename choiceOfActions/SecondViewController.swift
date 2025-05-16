@@ -8,22 +8,44 @@
 import UIKit
 
 class SecondViewController: UIViewController {
-
+    
+    @IBOutlet weak var showAllButton: UIButton!
+    @IBOutlet weak var firstImage: UIImageView!
+    @IBOutlet weak var secondImage: UIImageView!
+    @IBOutlet weak var thirdImage: UIImageView!
+    @IBOutlet weak var hideFirstButton: UIButton!
+    @IBOutlet weak var hideSecondButton: UIButton!
+    @IBOutlet weak var hideThirdButton: UIButton!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Second screen"
+    }
 
-        // Do any additional setup after loading the view.
+
+    
+    @IBAction func showAllAction(_ sender: Any) {
+        firstImage.isHidden = false
+        secondImage.isHidden = false
+        thirdImage.isHidden = false
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    
+    @IBAction func hideAndShowFirstAction(_ sender: Any) {
+        firstImage.isHidden = !firstImage.isHidden
+        
     }
-    */
-
+    
+    
+    @IBAction func hideAndShowSecondAction(_ sender: Any) {
+        secondImage.isHidden = !secondImage.isHidden
+    }
+    
+    
+    @IBAction func hideAndShowThirdAction(_ sender: Any) {
+        thirdImage.isHidden = !thirdImage.isHidden
+    }
 }
