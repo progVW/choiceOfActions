@@ -25,10 +25,14 @@ class ThirdViewController: UIViewController {
     let maxColorValue: Float = 255.0
     let minColorValue: Float = 0.0
     
+    
+    //нахождение медианы значения у слайдера
     func mediana(_ sender: inout UISlider) {
         sender.value = (sender.maximumValue - sender.minimumValue) / 2 + sender.minimumValue
     }
     
+    
+    //функция изменения значений у label слайдеров
     func printLabelValue() {
         labelValueRed.text = "\(Int(sliderRedOUT.value))"
         labelValueGreen.text = "\(Int(sliderGreenOUT.value))"
@@ -36,6 +40,8 @@ class ThirdViewController: UIViewController {
         labelValueAlpha.text = "\(round(sliderAlphaOUT.value * 10) / 10)"
     }
     
+    
+    //функция для изменения цвета у UIView
     func changePictureBackgroundColor(R: CGFloat, G: CGFloat, B: CGFloat) {
         picture.backgroundColor = UIColor(
             red: R / CGFloat(maxColorValue),
@@ -44,6 +50,7 @@ class ThirdViewController: UIViewController {
             alpha: CGFloat(sliderAlphaOUT.value))
     }
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Third screen"
@@ -60,11 +67,18 @@ class ThirdViewController: UIViewController {
         printLabelValue()
     }
     
+    
+    /*
+     вспомогательная функция для инициализации
+     начальных значений слайдеров
+    */
     func setupBoundaryValue(for slider: UISlider) {
         slider.minimumValue = minColorValue
         slider.maximumValue = maxColorValue
     }
     
+    
+    //функция изменения слайдера красного цвета
     @IBAction func sliderRed(_ sender: UISlider) {
         labelValueRed.text = "\(Int(sender.value))"
         changePictureBackgroundColor(
@@ -73,6 +87,8 @@ class ThirdViewController: UIViewController {
             B: CGFloat(sliderBlueOUT.value))
     }
     
+    
+    //функция изменения слайдера зеленого цвета
     @IBAction func sliderGreen(_ sender: UISlider) {
         labelValueGreen.text = "\(Int(sender.value))"
         changePictureBackgroundColor(
@@ -81,6 +97,7 @@ class ThirdViewController: UIViewController {
             B: CGFloat(sliderBlueOUT.value))
     }
     
+    //функция изменения слайдера синего цвета
     @IBAction func sliderBlue(_ sender: UISlider) {
         labelValueBlue.text = "\(Int(sender.value))"
         changePictureBackgroundColor(
@@ -89,6 +106,14 @@ class ThirdViewController: UIViewController {
             B: CGFloat(sliderBlueOUT.value))
     }
     
+    
+    /*
+     Кнопка для установки значений
+     sliderRED
+     sliderGREEN
+     sliderBlue
+     в значение 0.0
+    */
     @IBAction func minAction(_ sender: Any) {
         sliderRedOUT.value = minColorValue
         sliderGreenOUT.value = minColorValue
@@ -100,6 +125,14 @@ class ThirdViewController: UIViewController {
             B: CGFloat(sliderBlueOUT.value))
     }
     
+    
+    /*
+     Кнопка для установки значений
+     sliderRED
+     sliderGREEN
+     sliderBlue
+     в значение 127.5
+    */
     @IBAction func mediumAction(_ sender: Any) {
         mediana(&sliderRedOUT)
         mediana(&sliderBlueOUT)
@@ -112,12 +145,13 @@ class ThirdViewController: UIViewController {
     }
     
     
-    /*Кнопка для установки значений
+    /*
+     Кнопка для установки значений
      sliderRED
      sliderGREEN
      sliderBlue
      в значение 255.0
-     */
+    */
     @IBAction func maxAction(_ sender: Any) {
         sliderRedOUT.value = maxColorValue
         sliderGreenOUT.value = maxColorValue
