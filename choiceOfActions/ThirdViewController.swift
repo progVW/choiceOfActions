@@ -112,6 +112,12 @@ class ThirdViewController: UIViewController {
     }
     
     
+    /*Кнопка для установки значений
+     sliderRED
+     sliderGREEN
+     sliderBlue
+     в значение 255.0
+     */
     @IBAction func maxAction(_ sender: Any) {
         sliderRedOUT.value = maxColorValue
         sliderGreenOUT.value = maxColorValue
@@ -127,6 +133,10 @@ class ThirdViewController: UIViewController {
     //Функция для редактирования значения прозрачности
     @IBAction func sliderAlpha(_ sender: UISlider) {
         sender.value = sliderAlphaOUT.value
+        changePictureBackgroundColor(
+            R: CGFloat(self.sliderRedOUT.value),
+            G: CGFloat(self.sliderGreenOUT.value),
+            B: CGFloat(self.sliderBlueOUT.value))
         printLabelValue()
     }
 
